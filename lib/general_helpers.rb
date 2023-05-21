@@ -8,3 +8,11 @@ def normalize(path)
     dirpath = File.dirname(filepath)
     Dir.chdir(dirpath)
 end
+
+# system(command), but aborts if the command fails.
+def safe_system(command)
+  unless system(command)
+    puts "Command '#{command}' failed. Aborting."
+    exit
+  end
+end
