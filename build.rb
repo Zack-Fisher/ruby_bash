@@ -22,7 +22,8 @@ version = "0.0.1"
 
 if not ARGV[0]
     # just build the default gem with the default version, and install that.
-    build_gem
+    update_gem_version version
+    build_gem version
     exit
 end
 

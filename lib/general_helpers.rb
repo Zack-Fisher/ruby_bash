@@ -16,3 +16,28 @@ def safe_system(command)
     exit
   end
 end
+
+# for generating usage strings.
+def print_method_sig(method_name)
+    method_obj = method(method_name)
+    param_list = method_obj.parameters.map do |type, name|
+        case type
+        when :req then name.to_s
+        when :opt then "#{name} = <default_value>"
+        when :rest then "*#{name}"
+        when :keyreq then "#{name}:"
+        when :key then "#{name}: <default_value>"
+        when :keyrest then "**#{name}"
+        when :block then "&#{name}"
+        end
+    end
+    puts "#{method_name}(#{param_list.join(', ')})"
+end
+
+# function usage string, with a custom string param that formats it for you.
+def usage(method_name, custom_usage_string)
+    puts "Usage for #{method_name}:"
+    print_method_sig(method_name)
+    puts custom_usage_string
+    exit
+end
