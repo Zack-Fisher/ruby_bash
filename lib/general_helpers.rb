@@ -35,9 +35,25 @@ def print_method_sig(method_name)
 end
 
 # function usage string, with a custom string param that formats it for you.
-def usage(method_name, custom_usage_string)
+def usage(method_name, custom_usage_string, should_exit = true)
     puts "Usage for #{method_name}:"
     print_method_sig(method_name)
     puts custom_usage_string
-    exit
+    if should_exit
+        exit
+    end
+end
+
+# require every file in a directory.
+def require_dir(directory_path)
+    # Get an array of all files in the directory
+    script_files = Dir.glob(File.join(directory_path, '*.rb'))
+
+    # Iterate over each script file
+    script_files.each do |script_file|
+        # Require or load the script file
+        require script_file
+        # Or if you want to load instead of requiring:
+        # load script_file
+    end
 end
