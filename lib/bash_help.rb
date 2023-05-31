@@ -7,3 +7,5 @@
 require_relative 'hello_module.rb'
 require_relative 'bash_standins.rb'
 require_relative 'general_helpers.rb'
+require_relative 'drawing.rb'
+require_relative 'compile.rb'
