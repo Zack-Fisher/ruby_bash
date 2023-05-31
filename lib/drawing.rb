@@ -111,6 +111,3 @@ def test_all_drawing_methods
   pyramid_text("Test text")
   puts "\n"
 end
-
-# Run the testing function
-test_all_drawing_methods
