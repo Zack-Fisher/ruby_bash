@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+# usage: ./build.rb <version> <message>
+
 require_relative 'lib/bash_help.rb'
 
 normalize __FILE__
@@ -38,5 +40,5 @@ message = ""
 if ARGV[1]
     message = ARGV[1]
 end
-safe_system "git commit -m \"version #{version}#{message}\""
+safe_system "git commit -m \"version #{version}: #{message}\""
 safe_system "git push"

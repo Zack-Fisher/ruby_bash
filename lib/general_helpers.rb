@@ -53,7 +53,13 @@ def require_dir(directory_path)
     script_files.each do |script_file|
         # Require or load the script file
         require script_file
-        # Or if you want to load instead of requiring:
-        # load script_file
     end
+end
+
+=begin
+call this like 
+require_dir_relative(__FILE__, 'path/to/directory')
+=end
+def require_dir_relative(script_file_path, directory_path)
+    require_dir(File.expand_path(File.dirname(script_file_path), directory_path))
 end
